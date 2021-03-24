@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
+    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#news-table").DataTable({
+                // 표시 건수기능 숨기기
+                lengthChange: false,
+                // 검색 기능 숨기기
+                searching: false,
+                // 정렬 기능 숨기기
+                ordering: true,
+                // 정보 표시 숨기기
+                info: false,
+                // 페이징 기능 숨기기
+                paging: false
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <table id="news-table" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>시간</th>
+                <th>신문사</th>
+                <th>제목</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="rssList : ${list}">
+                <td th:text="${rssList.time}">20202020</td>
+                <td th:text="${rssList.base}"></td>
+                <td><a th:utext="${rssList.title}" th:href="@{${rssList.link}}">제목</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
